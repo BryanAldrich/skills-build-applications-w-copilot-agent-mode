@@ -43,5 +43,8 @@
             "label": "octofit-tracker-mongodb",
             "requireLocalPort": true
         }
+    },
+    "remoteEnv": {
+        "CODESPACE_NAME": "${localEnv:CODESPACE_NAME}"
     }
 }
