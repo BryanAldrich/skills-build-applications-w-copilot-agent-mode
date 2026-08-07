@@ -8,6 +8,15 @@ const health_1 = __importDefault(require("./routes/health"));
 const api_1 = __importDefault(require("./routes/api"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(204);
+    }
+    next();
+});
 app.use('/health', health_1.default);
 app.use('/api', api_1.default);
 exports.default = app;
